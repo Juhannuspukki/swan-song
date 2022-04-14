@@ -1,0 +1,52 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+    provider             = "mysql"
+    url                  = env("DATABASE_URL")
+    referentialIntegrity = "prisma"
+}
+
+model Email {
+    id          String       @id @default(uuid())
+    email       String       @unique
+    verified    Boolean
+}
+
+model User {
+    id          String       @id @default(uuid())
+    username    String       @unique
+    password    String
+    comments    Comment[]
+    upvotes     UpVote[]
+    downvotes   DownVote[]
+}
+
+model Comment {
+    id          String       @id @default(uuid())
+    author      User         @relation(fields: [authorId], references: [id])
+    authorId    String
+    comment     String
+    grade       Int
+    work        Int
+    upvotes     UpVote[]
+    downvotes   DownVote[]
+}
+
+model UpVote {
+    user        User         @relation(fields: [userId], references: [id])
+    userId      String
+    comment     Comment      @relation(fields: [commentId], references: [id])
+    commentId   String
+    @@id([userId, commentId])
+}
+
+model DownVote {
+    user        User         @relation(fields: [userId], references: [id])
+    userId      String
+    comment     Comment      @relation(fields: [commentId], references: [id])
+    commentId   String
+    @@id([userId, commentId])
+}
