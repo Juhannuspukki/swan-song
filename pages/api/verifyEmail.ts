@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../lib/prisma";
+import { prisma } from "../../lib/prisma";
 import { Prisma } from "@prisma/client";
 import sendEmail from "../../lib/sendVerificationEmail";
 
