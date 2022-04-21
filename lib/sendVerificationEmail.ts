@@ -12,8 +12,8 @@ const sendEmail = async (address: string, verification: string) => {
   }
 
   const verificationString = inDevEnvironment
-    ? `http://localhost:3000/verify/${verification}`
-    : `https://course-o-meter.com/verify/${verification}`;
+    ? `http://localhost:3000/sign-up/${verification}`
+    : `https://course-o-meter.com/sign-up/${verification}`;
 
   const params = {
     Source: "Course-O-Meter <hello@course-o-meter.com>",
@@ -27,17 +27,18 @@ const sendEmail = async (address: string, verification: string) => {
           Charset: "UTF-8",
           Data: `
             <html>
-              <h1> Please verify your email to proceed with registration</h1>
-              <p>Kindly use the link below to verify your email address.<p/>
-              <a href="${verificationString}">Verify email</a>
-              <p>Thank you for choosing Course-O-Meter and the Course-O-Matic course review system.<p/>
+              <h1>You can now register an account</h1>
+              <p>Kindly use <a href="${verificationString}">this link</a> to create your account. This link will be valid for 24 hours.</p>
+              <p>Thank you for choosing Course-O-Meter and the Course-O-Matic course review system.</p>
+              <br/>
+              <p>P.S. after you have successfully created your account delete this email and hit your computer once with a hammer, just to be sure.</p>
             </html>
           `,
         },
       },
       Subject: {
         Charset: "UTF-8",
-        Data: `Verify your email for Course-O-Meter`,
+        Data: `Account creation link for Course-O-Meter`,
       },
     },
   };

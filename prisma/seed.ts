@@ -7,7 +7,12 @@ const load = async () => {
     console.log("Deleted records in email table");
 
     await prisma.email.createMany({
-      data: [],
+      data: [
+        {
+          email: "jere@jere.pro",
+          verified: false,
+        },
+      ],
       skipDuplicates: true,
     });
     console.log("Added email data");

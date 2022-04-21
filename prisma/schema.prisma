@@ -12,13 +12,16 @@ datasource db {
 model Email {
     id          String       @id @default(uuid())
     email       String       @unique
-    verified    Boolean
+    signupKey   String?      @unique
+    createdAt   DateTime?    @default(now())
 }
 
 model User {
     id          String       @id @default(uuid())
     username    String       @unique
     password    String
+    email       String
+    isBanned    Boolean      @default(false)
     comments    Comment[]
     upvotes     UpVote[]
     downvotes   DownVote[]
