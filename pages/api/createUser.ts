@@ -11,9 +11,9 @@ export default async function handle(
 
   // if a required field is missing, respond with bad request
   if (
-    typeof signupKey === "undefined" ||
-    typeof username === "undefined" ||
-    typeof password === "undefined"
+    !(typeof signupKey === "string") ||
+    !(typeof username === "string") ||
+    !(typeof password === "string")
   ) {
     return res.status(400).json({
       message: "Required fields: signupKey, username, password",
