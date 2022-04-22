@@ -19,6 +19,11 @@ const Home: NextPage = () => {
         >
           Course-O-Meter archive →
         </a>
+        <p>
+          <a href={"/verify"} className={styles.soonLink}>
+            Create an account (beta) →
+          </a>
+        </p>
       </div>
     </div>
   );
