@@ -2,6 +2,10 @@ import { SendEmailCommand, SESClient } from "@aws-sdk/client-ses";
 
 const SES = new SESClient({
   region: "us-east-1",
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID_SES!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_SES!,
+  },
 });
 
 const sendEmail = async (address: string, verification: string) => {
