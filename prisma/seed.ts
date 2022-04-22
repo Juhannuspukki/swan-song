@@ -9,8 +9,8 @@ const load = async () => {
     await prisma.email.createMany({
       data: [
         {
-          email: "jere@jere.pro",
-          verified: false,
+          email: "test@example.fi",
+          signupKey: "14",
         },
       ],
       skipDuplicates: true,
