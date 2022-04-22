@@ -20,10 +20,17 @@ export default async function handle(
     });
   }
 
+  const validatorExpression =
+    /^(?!\x20)([öÖäÄåÅ_\-\x20a-zA-Z0-9](?!\x20{2,})(?!\x20$)){3,24}$/g;
+
   if (username.toLowerCase().includes("drop table")) {
     return res.status(418).json({
       message:
         "Table dropped successfully. Please review recovery information here before restarting the server: https://course-o-meter.com/api/recovery",
+    });
+  } else if (!validatorExpression.test(username)) {
+    return res.status(403).json({
+      message: "Username contains forbidden characters.",
     });
   }
 
