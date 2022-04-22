@@ -6,7 +6,9 @@ const Thanks: NextPage = () => {
     <Confirmation
       title={"Success!"}
       icon={<MailIcon />}
-      text={"An account creation link has been sent your inbox."}
+      text={
+        "If this email has not been previously registered, an account creation link will be sent your inbox."
+      }
     />
   );
 };

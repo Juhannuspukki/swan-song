@@ -57,7 +57,9 @@ export default async function handle(
 
     // const verificationEmail = await sendEmail(email, signupKey);
 
-    return res.status(201).json(result);
+    return res.status(202).json({
+      message: "Email processing has been started successfully.",
+    });
 
     // -- end of successful response --
   } catch (e) {
@@ -67,8 +69,8 @@ export default async function handle(
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
       // P2002 means this user already exists
       if (e.code === "P2002") {
-        return res.status(409).json({
-          message: "Oops, I spoke too soon. This email is already in use.",
+        return res.status(202).json({
+          message: "Email processing has been started successfully.",
         });
       }
     }
