@@ -55,7 +55,7 @@ export default async function handle(
       },
     });
 
-    // const verificationEmail = await sendEmail(email, signupKey);
+    const verificationEmail = await sendEmail(email, signupKey);
 
     return res.status(202).json({
       message: "Email processing has been started successfully.",
