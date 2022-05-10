@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           </a>
         </p>
         <p>
-          <a href={"/verify"} className={styles.soonLink}>
+          <a href={"/login"} className={styles.soonLink}>
             Log in to your account (alpha) →
           </a>
         </p>
