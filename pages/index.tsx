@@ -24,6 +24,11 @@ const Home: NextPage = () => {
             Create an account (beta) →
           </a>
         </p>
+        <p>
+          <a href={"/verify"} className={styles.soonLink}>
+            Log in to your account (alpha) →
+          </a>
+        </p>
       </div>
     </div>
   );
